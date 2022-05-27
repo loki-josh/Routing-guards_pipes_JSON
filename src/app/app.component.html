@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>reactive form</title>
+</head>
+<body>
+    <form [formGroup]="reactiveForm" (ngSubmit)="Submitform()" >
+        <div class="div">*First Name : <input type="text" formControlName='firstName'></div>
+        <p class="error" *ngIf="reactiveForm.get('firstName').invalid && reactiveForm.get('firstName').touched"> *Please enter name</p> 
+         <div class="div">*Last Name : <input type="text" formControlName='lastName'></div>
+         <p class="error" *ngIf="reactiveForm.get('lastName').invalid && reactiveForm.get('lastName').touched"> *Please enter last name</p>
+     
+         <div class="div">*Email Id : <input type="text" formControlName='email'></div>
+         <p class="error" *ngIf="reactiveForm.get('email').invalid && reactiveForm.get('email').touched"> *Please enter valid email</p>
+     
+         <div class="div">*Phone number : <input type="text" formControlName="phone">
+         </div>
+         <p class="error" *ngIf="reactiveForm.get('phone').invalid && reactiveForm.get('phone').touched"> *Please enter valid phone number</p>
+     
+         <div class="div">*Password : <input type="text" formControlName="password"></div>
+         <p class="error" *ngIf="reactiveForm.get('password').invalid && reactiveForm.get('password').touched"> *Please enter valid password</p> 
+     
+         <div class="div">Confirm password : <input type="text" formControlName="confirmPassword"></div>
+          <p class="error" *ngIf=" reactiveForm.get('confirmPassword').value !== reactiveForm.get('password').value"> *Please confirm the password</p>
+         
+          <!-- <div class="error" *ngIf="reactiveForm.value.password !== reactiveForm.value.confirmpassword"> Passwords don't match.</div> -->
+
+         <div class="div">*Address : <input type="text" formControlName="address"></div>
+          <p class="error" *ngIf="reactiveForm.get('address').invalid && reactiveForm.get('address').touched"> *Please fill the address</p>
+     
+         <div class="div"><button class="btn"  type="submit" [disabled]="!reactiveForm.valid">Submit</button><button class="btn" >Login Here</button>
+         <button class="btn" >clar</button>
+         </div>
+
+    </form>
+</body>
+</html>
